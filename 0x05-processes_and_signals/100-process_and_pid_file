@@ -1,11 +1,8 @@
 #!/usr/bin/env bash
-# This script displays "To infinity and beyond" indefinitely
-# and handles different signals.
+# This script displays fun messages when receiving signals
 
 # Get the PID of the current script and store it in the file
 echo $$ > /var/run/myscript.pid
-
-# Trap signals and define signal handlers
 trap 'echo "I hate the kill command"; rm -rf /var/run/myscript.pid; exit'' SIGTERM
 trap 'echo "Y U no love me?!"' SIGINT
 trap 'rm -f /var/run/myscript.pid; exit' SIGQUIT SIGTERM
@@ -13,5 +10,5 @@ trap 'rm -f /var/run/myscript.pid; exit' SIGQUIT SIGTERM
 # Display "To infinity and beyond" indefinitely
 while true; do
     echo "To infinity and beyond"
-    sleep 1
+    sleep 2
 done
