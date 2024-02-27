@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This script displays a list of currently running processes.
+
+# Header
+printf "%-9s %-5s %-5s %-8s %-8s %-8s %-5s %-8s %-8s %s\n" "USER" "PID" "%CPU" "%MEM" "VSZ" "RSS" "TTY" "STAT" "START" "COMMAND"
+
+# Display processes
+ps aux --forest | awk '{printf "%-9s %-5s %-5s %-8s %-8s %-8s %-5s %-8s %-8s %s\n", $1, $2, $3, $4, $5, $6, $7, $8, $9, $10}'

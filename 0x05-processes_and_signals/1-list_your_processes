@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# This script displays a list of currently running processes.
+
+# Print the header
+printf "%-8s %-5s %-5s %-8s %-8s %-8s %-10s %-5s %-10s %s\n" "USER" "PID" "%CPU" "%MEM" "VSZ" "RSS" "TTY" "STAT" "START" "COMMAND"
+
+# Iterate through each process
+while IFS= read -r line; do
+    # Extract relevant information
+    user=$(echo "$line" | awk '{print $1}')
+    pid=$(echo "$line" | awk '{print $2}')
+    cpu=$(echo "$line" | awk '{print $3}')
+    mem=$(echo "$line" | awk '{print $4}')
+    vsz=$(echo "$line" | awk '{print $5}')
+    rss=$(echo "$line" | awk '{print $6}')
+    tty=$(echo "$line" | awk '{print $7}')
+    stat=$(echo "$line" | awk '{print $8}')
+    start=$(echo "$line" | awk '{print $9" "$10}')
+    command=$(echo "$line" | awk '{for(i=11;i<=NF;++i) printf "%s ", $i; print ""}')
+    
+    # Print in the desired format
+    printf "%-8s %-5s %-5s %-8s %-8s %-8s %-10s %-5s %-10s %s\n" "$user" "$pid" "$cpu" "$mem" "$vsz" "$rss" "$tty" "$stat" "$start" "$command"
+done < <(ps -e -o user,pid,%cpu,%mem,vsz,rss,tty,stat,start,comm --no-headers)
