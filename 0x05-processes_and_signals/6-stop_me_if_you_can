@@ -2,11 +2,4 @@
 # This script stops the 4-to_infinity_and_beyond process.
 
 # Find and stop the process
-pkill -f "4-to_infinity_and_beyond"
-
-# Check if the process is still running
-if pgrep -f "4-to_infinity_and_beyond" >/dev/null; then
-    echo "Process could not be stopped"
-else
-    echo "Process stopped successfully"
-fi
+pkill -f 4-to_infinity_and_beyond
