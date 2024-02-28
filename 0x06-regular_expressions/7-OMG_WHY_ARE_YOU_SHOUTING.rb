@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
-# This script accepts one argument and passes it to a regular expression matching method
-# This script should output: [SENDER],[RECEIVER],[FLAGS]
+# This script accepts one argument and extracts only capital letters
+# from the input string.
 
-regex = /(?<=from:|to:|flags:).+?(?=\])/
-puts ARGV[0].scan(regex).join(',')
+regex = /[A-Z]/
+puts ARGV[0].scan(regex).join
