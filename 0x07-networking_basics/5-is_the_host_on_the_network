@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Bash script to ping an IP address passed as an argument
+
+# Check if no argument is passed
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 {IP_ADDRESS}"
+    exit 1
+fi
+
+# Extract IP address from argument
+ip_address=$1
+
+# Ping the IP address 5 times and display the result
+ping_result=$(ping -c 5 "$ip_address")
+
+# Display the ping result
+echo "$ping_result"

@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# This script displays listening ports along with the PID and program name
+
+# Get listening sockets using ss and filter for TCP/UDP connections
+listening_sockets=$(ss -tuln)
+
+# Print header
+echo "Listening Ports:"
+echo "PID     Program Name         Port     Protocol"
+
+# Loop through each line of ss output
+while IFS= read -r line; do
+    # Extract protocol, local address, and PID from the ss output
+    protocol=$(echo "$line" | awk '{print $1}')
+    local_address=$(echo "$line" | awk '{print $4}')
+    pid=$(echo "$line" | awk '{print $NF}')
+
+    # Extract port number from the local address
+    port=$(echo "$local_address" | awk -F ':' '{print $NF}')
+
+    # Get program name associated with PID
+    program_name=$(ps -p "$pid" -o comm= | tail -n 1)
+
+    # Print PID, program name, port, and protocol if the socket is listening
+    if [[ $line =~ ^[^[:space:]] ]]; then
+        echo "$pid     $program_name     $port     $protocol"
+    fi
+done <<< "$listening_sockets"
