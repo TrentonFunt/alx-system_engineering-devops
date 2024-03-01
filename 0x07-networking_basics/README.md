@@ -36,9 +36,9 @@ chmod +x script_name.sh
 Execute the desired script by running:
 
 ./script_name.sh
-
 Replace script_name.sh with the name of the script you want to execute.
 
+```
 ## Contributions
 Contributions to improve or expand these scripts are welcome. If you have any suggestions or find any issues, feel free to open an issue or create a pull request.
 
