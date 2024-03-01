@@ -32,7 +32,9 @@ sudo ./0-change_your_home_IP.sh
 ```
 
 Contributions
+
 Contributions to improve or expand these scripts are welcome. If you have any suggestions or find any issues, feel free to open an issue or create a pull request.
 
 License
+
 This project is licensed under the MIT License.
