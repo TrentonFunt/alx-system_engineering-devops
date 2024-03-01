@@ -21,6 +21,7 @@ Terminal 2 (to connect and send text):
 
 telnet localhost 98
 
+
 3. Configure Ubuntu Server
 Description:
 This script configures an Ubuntu server to modify the resolution of certain hostnames in the /etc/hosts file.
@@ -28,6 +29,7 @@ This script configures an Ubuntu server to modify the resolution of certain host
 Usage:
 
 sudo ./0-change_your_home_IP.sh
+```
 
 Contributions
 Contributions to improve or expand these scripts are welcome. If you have any suggestions or find any issues, feel free to open an issue or create a pull request.
